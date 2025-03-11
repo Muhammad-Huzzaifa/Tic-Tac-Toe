@@ -57,7 +57,7 @@ class TicTacToeGame:
         pygame.draw.line(self.screen, self.white, (0, 70 + self.boxSize), (self.width, 70 + self.boxSize), 2)
         pygame.draw.line(self.screen, self.white, (0, 70 + self.boxSize * 2), (self.width, 70 + self.boxSize * 2), 2)
         
-        board = self.gameLogic.getBoard()
+        board = self.gameLogic.get_board()
         for i in range(3):
             for j in range(3):
                 x = j * self.boxSize + self.boxSize // 2
@@ -243,12 +243,12 @@ class TicTacToeGame:
         pygame.time.delay(random.randint(800, 1600))
         
         isMaximizing = self.currPlayer == 'X'
-        move = self.gameLogic.bestMove(isMaximizing)
+        move = self.gameLogic.best_move(isMaximizing)
         
         if self.currPlayer == 'X':
-            self.gameLogic.XPlayerMove(move[0], move[1])
+            self.gameLogic.X_move(move[0], move[1])
         else:
-            self.gameLogic.OPlayerMove(move[0], move[1])
+            self.gameLogic.O_move(move[0], move[1])
             
         self.currPlayer = 'O' if self.currPlayer == 'X' else 'X'
         self.playerTurn = True
@@ -258,19 +258,19 @@ class TicTacToeGame:
         ''' Check the game state and update the status text.
         '''
 
-        if self.gameLogic.XPlayerWinCheck():
+        if self.gameLogic.X_win_check():
             winner = 'PLAYER 1' if not self.vsComputer else ('YOU' if self.isX else 'AI')
             self.statusText = f'{winner} WINS!'
             self.statusColor = self.green if (self.isX and self.vsComputer) or not self.vsComputer else self.red
             self.over = True
 
-        elif self.gameLogic.OPlayerWinCheck():
+        elif self.gameLogic.O_win_check():
             winner = 'PLAYER 2' if not self.vsComputer else ('YOU' if not self.isX else 'AI')
             self.statusText = f'{winner} WINS!'
             self.statusColor = self.green if (not self.isX and self.vsComputer) or not self.vsComputer else self.red
             self.over = True
 
-        elif self.gameLogic.DrawCheck():
+        elif self.gameLogic.draw_check():
             self.statusText = 'GAME IS DRAW!'
             self.statusColor = self.blue
             self.over = True
@@ -381,9 +381,9 @@ class TicTacToeGame:
                                 moveSuccess = False
                                 
                                 if self.currPlayer == 'X':
-                                    moveSuccess = self.gameLogic.XPlayerMove(row, col)
+                                    moveSuccess = self.gameLogic.X_move(row, col)
                                 else:
-                                    moveSuccess = self.gameLogic.OPlayerMove(row, col)
+                                    moveSuccess = self.gameLogic.O_move(row, col)
                                 
                                 if moveSuccess:
                                     self.currPlayer = 'O' if self.currPlayer == 'X' else 'X'

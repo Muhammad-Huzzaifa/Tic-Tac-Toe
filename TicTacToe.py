@@ -12,7 +12,7 @@ class TicTacToe:
         self.board = [[' ' for _ in range(3)] for _ in range(3)]
 
 
-    def XPlayerWinCheck(self) -> bool:
+    def X_win_check(self) -> bool:
         ''' Check if the X player has won the game.
 
         Returns:
@@ -29,7 +29,7 @@ class TicTacToe:
         return False
 
 
-    def OPlayerWinCheck(self) -> bool:
+    def O_win_check(self) -> bool:
         ''' Check if the O player has won the game.
         
         Returns:
@@ -46,7 +46,7 @@ class TicTacToe:
         return False
 
 
-    def DrawCheck(self) -> bool:
+    def draw_check(self) -> bool:
         '''Check if the game is a draw.
 
         Returns:
@@ -56,7 +56,7 @@ class TicTacToe:
         return all(self.board[i][j] != ' ' for i in range(3) for j in range(3))
 
 
-    def XPlayerMove(self, x : int, y : int) -> bool:
+    def X_move(self, x : int, y : int) -> bool:
         ''' Make a move for the X player.
 
         Args:
@@ -74,7 +74,7 @@ class TicTacToe:
         return False
 
 
-    def OPlayerMove(self, x : int, y : int) -> bool:
+    def O_move(self, x : int, y : int) -> bool:
         ''' Make a move for the O player.
 
         Args:
@@ -92,7 +92,7 @@ class TicTacToe:
         return False
 
 
-    def getBoard(self) -> List[List[str]]:
+    def get_board(self) -> List[List[str]]:
         ''' Get the current state of the board.
         '''
 
@@ -111,11 +111,11 @@ class TicTacToe:
             int: The best score for the current player.
         '''
 
-        if self.XPlayerWinCheck():
+        if self.X_win_check():
             return 1
-        if self.OPlayerWinCheck():
+        if self.O_win_check():
             return -1
-        if self.DrawCheck():
+        if self.draw_check():
             return 0
         
         if isMaximizing:
@@ -147,7 +147,7 @@ class TicTacToe:
             return minValue
         
     
-    def bestMove(self, isMaximizing : bool) -> tuple:
+    def best_move(self, isMaximizing : bool) -> tuple:
         ''' Get the best move for the AI player.
 
         Args:
@@ -158,7 +158,7 @@ class TicTacToe:
         '''
 
         bestScore = float('-inf') if isMaximizing else float('inf')
-        bestMove = (-1, -1)
+        best_move = (-1, -1)
 
         for i in range(3):
             for j in range(3):
@@ -169,10 +169,10 @@ class TicTacToe:
                     if isMaximizing:
                         if score > bestScore:
                             bestScore = score
-                            bestMove = (i, j)
+                            best_move = (i, j)
                     else:
                         if score < bestScore:
                             bestScore = score
-                            bestMove = (i, j)
+                            best_move = (i, j)
         
-        return bestMove
+        return best_move
