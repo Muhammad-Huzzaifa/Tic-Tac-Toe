@@ -102,12 +102,12 @@ class TicTacToeGame:
                     sys.exit()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    mouse_pos = event.pos
+                    mousePos = event.pos
 
-                    if vsHumanBtn.collidepoint(mouse_pos):
+                    if vsHumanBtn.collidepoint(mousePos):
                         self.vsComputer = False
                         return
-                    elif vsAIBtn.collidepoint(mouse_pos):
+                    elif vsAIBtn.collidepoint(mousePos):
                         self.vsComputer = True
                         return
     
@@ -119,8 +119,8 @@ class TicTacToeGame:
         self.screen.fill(self.backColor)
         
         title = self.largeFont.render('Coin Toss', True, self.white)
-        title_rect = title.get_rect(center=(self.width // 2, 75))
-        self.screen.blit(title, title_rect)
+        titleRect = title.get_rect(center=(self.width // 2, 75))
+        self.screen.blit(title, titleRect)
         
         Head = pygame.Rect(105, 200, 210, 56)
         Tail = pygame.Rect(105, 270, 210, 56)
@@ -146,8 +146,8 @@ class TicTacToeGame:
                     sys.exit()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
-
                     mousePos = event.pos
+
                     if Head.collidepoint(mousePos):
                         choice = 'Heads'
                     elif Tail.collidepoint(mousePos):
@@ -156,14 +156,14 @@ class TicTacToeGame:
         result = random.choice(['Heads', 'Tails'])
         
         self.screen.fill(self.backColor)
-        result_text = self.largeFont.render(f'Coin shows: {result}', True, self.white)
-        result_rect = result_text.get_rect(center=(self.width // 2, 200))
-        self.screen.blit(result_text, result_rect)
+        resultText = self.largeFont.render(f'Coin shows: {result}', True, self.white)
+        resultRect = resultText.get_rect(center=(self.width // 2, 200))
+        self.screen.blit(resultText, resultRect)
         
-        win_or_lose = 'YOU WON!' if choice == result else 'YOU LOST!'
-        outcome_text = self.largeFont.render(win_or_lose, True, self.green if choice == result else self.red)
-        outcome_rect = outcome_text.get_rect(center=(self.width // 2, 270))
-        self.screen.blit(outcome_text, outcome_rect)
+        winOrLose = 'YOU WON!' if choice == result else 'YOU LOST!'
+        outcomeText = self.largeFont.render(winOrLose, True, self.green if choice == result else self.red)
+        outcomeRect = outcomeText.get_rect(center=(self.width // 2, 270))
+        self.screen.blit(outcomeText, outcomeRect)
         
         pygame.display.flip()
         pygame.time.delay(1500)
@@ -204,11 +204,11 @@ class TicTacToeGame:
                     sys.exit()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
+                    mousePos = event.pos
 
-                    mouse_pos = event.pos
-                    if XBtn.collidepoint(mouse_pos):
+                    if XBtn.collidepoint(mousePos):
                         return True
-                    elif OBtn.collidepoint(mouse_pos):
+                    elif OBtn.collidepoint(mousePos):
                         return False
     
 
@@ -289,16 +289,16 @@ class TicTacToeGame:
         '''
         
         replayBtn = pygame.Rect(105, 200, 210, 56)
-        quit_btn = pygame.Rect(105, 270, 210, 56)
+        quitBtn = pygame.Rect(105, 270, 210, 56)
         
         pygame.draw.rect(self.screen, self.gray, replayBtn)
-        pygame.draw.rect(self.screen, self.gray, quit_btn)
+        pygame.draw.rect(self.screen, self.gray, quitBtn)
         
-        replay_text = self.smallFont.render('Replay', True, self.white)
-        quit_text = self.smallFont.render('Quit', True, self.white)
+        replayText = self.smallFont.render('Replay', True, self.white)
+        quitText = self.smallFont.render('Quit', True, self.white)
         
-        self.screen.blit(replay_text, replay_text.get_rect(center=replayBtn.center))
-        self.screen.blit(quit_text, quit_text.get_rect(center=quit_btn.center))
+        self.screen.blit(replayText, replayText.get_rect(center=replayBtn.center))
+        self.screen.blit(quitText, quitText.get_rect(center=quitBtn.center))
         
         pygame.display.flip()
         
@@ -312,9 +312,10 @@ class TicTacToeGame:
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = event.pos
+
                     if replayBtn.collidepoint(mouse_pos):
                         return True
-                    elif quit_btn.collidepoint(mouse_pos):
+                    elif quitBtn.collidepoint(mouse_pos):
                         return False
     
 
@@ -350,11 +351,11 @@ class TicTacToeGame:
                     
                     self.screen.fill(self.backColor)
                     
-                    choiceText = self.largeFont.render(f'AI chose: {symbolText}', True, self.white)
+                    choiceText = self.largeFont.render(f'AI chose: {'O' if self.isX else 'X'}', True, self.white)
                     choiceRect = choiceText.get_rect(center=(self.width // 2, 200))
                     self.screen.blit(choiceText, choiceRect)
                     
-                    youText = self.largeFont.render(f'You are: {'O' if self.isX else 'X'}', True, self.white)
+                    youText = self.largeFont.render(f'You are: {symbolText}', True, self.white)
                     youRect = youText.get_rect(center=(self.width // 2, 270))
                     self.screen.blit(youText, youRect)
                     
