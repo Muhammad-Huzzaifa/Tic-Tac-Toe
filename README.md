@@ -36,3 +36,9 @@ Tic-Tac-Toe/
 - The AI evaluates the game board using **Minimax with Alpha-Beta Pruning**.
 - The algorithm ensures **optimal moves** by minimizing the worst possible loss.
 - **Alpha-Beta Pruning** speeds up the decision-making process by ignoring unnecessary calculations.
+![image](https://github.com/user-attachments/assets/917cae90-868e-4a84-8d13-6b691294ee9b)
+![image](https://github.com/user-attachments/assets/6984a19d-af80-4d8f-88a2-942984014265)
+![image](https://github.com/user-attachments/assets/36c918ab-885b-415e-97e1-a059ce422e55)
+![image](https://github.com/user-attachments/assets/e7581392-5e61-43c1-b1b1-a0f51e5442d5)
+
+
