@@ -351,7 +351,7 @@ class TicTacToeGame:
                     
                     self.screen.fill(self.backColor)
                     
-                    choiceText = self.largeFont.render(f'AI chose: {'O' if self.isX else 'X'}', True, self.white)
+                    choiceText = self.largeFont.render(f"AI chose: {'O' if self.isX else 'X'}", True, self.white)
                     choiceRect = choiceText.get_rect(center=(self.width // 2, 200))
                     self.screen.blit(choiceText, choiceRect)
                     
