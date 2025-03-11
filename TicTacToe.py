@@ -1,3 +1,4 @@
+import random
 from typing import List
 
 class TicTacToe:
@@ -158,7 +159,7 @@ class TicTacToe:
         '''
 
         bestScore = float('-inf') if isMaximizing else float('inf')
-        best_move = (-1, -1)
+        bestMoves = [(-1, -1)]
 
         for i in range(3):
             for j in range(3):
@@ -169,10 +170,15 @@ class TicTacToe:
                     if isMaximizing:
                         if score > bestScore:
                             bestScore = score
-                            best_move = (i, j)
+                            bestMoves = [(i, j)]
+                        elif score == bestScore:
+                            bestMoves.append((i, j))
+
                     else:
                         if score < bestScore:
                             bestScore = score
-                            best_move = (i, j)
+                            bestMoves = [(i, j)]
+                        elif score == bestScore:
+                            bestMoves.append((i, j))
         
-        return best_move
+        return random.choice(bestMoves) if bestMoves else (-1, -1)
